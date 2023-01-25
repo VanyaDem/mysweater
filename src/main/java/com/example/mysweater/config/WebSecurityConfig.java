@@ -15,8 +15,9 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+
+    @Override
+   protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
                         .antMatchers("/").permitAll()
@@ -28,8 +29,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                         .logout()
                         .permitAll();
-
-        return http.build();
     }
 
     @Bean

@@ -4,6 +4,7 @@
 <@c.page>
         <dif>
             <@l.logout/>
+            <span><a href="/user">User List</a> </span>
             <form method="post">
                 <input type="text" name="text" placeholder="Enter your message"/>
                 <input type="tag" name="tag" placeholder="Tag">
@@ -13,7 +14,7 @@
         </dif>
          <div>Messages list</div>
             <form method="get" action="/main">
-                <input type="text" name="filter" value="${filter}">
+                <input type="text" name="filter" value="${filter?if_exists}">
                 <button type="submit">Find by tag</button>
             </form>
          <#list messages as message>
